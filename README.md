@@ -3,7 +3,7 @@
 	- 使用`jQuery`完成js交互及ajax网络请求
 	- `Less`进行CSS样式预编译
 	- 使用`animate.css`添加动画效果
-	- 使用`jQuery.dataTables.js`展示电影列表
+	- 使用`jQuery.dataTables.js`展示酒店列表
 	- 使用`Layer.js`弹出层插件进行消息提示
 
 2. 后端
@@ -36,4 +36,5 @@
 5.画廊管理功能。
 6.预定客房功能。
 7.查询功能。
+8.评论功能。
 
