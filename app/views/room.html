@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	{{include '/include/head'}}
+	<link rel="stylesheet" type="text/css" href="/libs/webuploader/webuploader.css">
+	<link rel="stylesheet" href="/css/addEdit.css">
+</head>
+<body>
+	<div class="container">
+		<form method="post" action="/admin/room/add" class="form-horizotal" id="form-room">
+			<div class="input-group">
+				<span class="input-group-addon">客房名称（价格）</span>
+				<input type="text" class="form-control" name="room[name]" id="name" placeholder="客房名称（价格）" value="{{room.name}}">
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">客房描述</span>
+				<input type="text" class="form-control" name="room[description]" id="description" placeholder="客房描述" value="{{room.description}}">
+			</div>
+			<div class="post-wrap">
+			<div id="uploader-demo">
+			    <div id="fileList" class="uploader-list"></div>
+			    <div id="filePicker">选择</div>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">客房图片</span>
+				<input type="text" class="form-control" name="room[poster]" id="poster" placeholder="客房图片,可填写图片链接或上传一张图片" value="{{room.poster}}">
+			</div>
+			</div>
+			<input type="hidden" name="room[_id]" value="{{room.id}}">
+			<button type="submit" class="btn btn-primary" id="submitForm"><i class="fa fa-save"></i>提交</button>
+		</form>
+	</div>
+	<script type="text/javascript" src="/js/room.js"></script>
+	<script type="text/javascript" src="/libs/webuploader/webuploader.min.js"></script>
+	<script type="text/javascript" src="/js/addEdit.js"></script>
+</body>
+</html>

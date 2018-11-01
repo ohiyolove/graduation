@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	{{include '/include/head'}}
+	<link rel="stylesheet" type="text/css" href="/libs/webuploader/webuploader.css">
+	<link rel="stylesheet" href="/css/addEdit.css">
+</head>
+<body>
+<div class="container">
+	<form method="post" action="/admin/photo/add" class="form-horizotal" enctype="multipart/form-data" id="form-photo">
+		<div class="input-group">
+			<span class="input-group-addon">豆瓣同步</span>
+			<input type="text" class="form-control" id="douban" name="photo[did]" placeholder="id" value="{{photo.did}}">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">作品名</span>
+			<input type="text" required class="form-control" name="photo[title]" id="title" placeholder="作品名称" value="{{photo.title}}">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">作者</span>
+			<input type="text" required class="form-control" name="photo[director]" id="director" placeholder="作者" value="{{photo.director}}">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">作品分类</span>
+			<select class="form-control" name="photo[category]" id="category">
+				<option value="">请选择分类</option>
+				{{if categorys && categorys.length}}
+				{{each categorys}}
+				<option value="{{$value.id}}" {{if photo.category == $value.id}}selected{{/if}}>{{$value.name}}</option>
+				{{/each}}
+				{{/if}}
+			</select>
+		</div>
+		<div class="post-wrap">
+			<div id="uploader-demo">
+			    <div id="fileList" class="uploader-list"></div>
+			    <div id="filePicker">上传封面</div>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">封面图片</span>
+				<input type="text" class="form-control" name="photo[poster]" id="poster" placeholder="封面图片,可填写图片链接或上传一张图片" value="{{photo.poster}}">
+			</div>
+		</div>
+		<!-- <div class="form-group">
+			<label for="uploadPoster">封面上传</label>
+			<input type="file" id="uploadPoster" name="uploadPoster">
+		</div> -->
+		<div class="input-group">
+			<span class="input-group-addon">拍摄时间</span>
+			<input type="text" class="form-control" name="photo[year]" id="year" placeholder="拍摄时间" value="{{photo.year}}">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">简介</span>
+			<textarea class="form-control" name="photo[summary]" id="summary" placeholder="简介">{{photo.summary}}</textarea>
+		</div>
+		{{if photo.id}}
+		<input type="hidden" name="photo[_id]" value="{{photo.id}}">
+		{{/if}}
+		<button type="submit" class="btn btn-primary" id="submitForm"><i class="fa fa-save"></i>{{if photo.id}}保存并修改{{else}}保存并添加{{/if}}</button>
+	</form>
+</div>
+<script type="text/javascript" src="/libs/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="/js/addEdit.js"></script>
+</body>
+</html>

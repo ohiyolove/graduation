@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	{{include '/include/head'}}
+	<link rel="stylesheet" href="/css/addEdit.css">
+</head>
+<body>
+	<div class="container">
+		<form method="post" action="/admin/advantage/add" class="form-horizotal" id="form-advantage">
+			<div class="input-group">
+				<span class="input-group-addon">优势名称</span>
+				<input type="text" class="form-control" name="advantage[name]" id="name" placeholder="优势名称" value="{{advantage.name}}">
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">优势描述</span>
+				<input type="text" class="form-control" name="advantage[description]" id="description" placeholder="优势描述" value="{{advantage.description}}">
+			</div>
+			<input type="hidden" name="advantage[_id]" value="{{advantage.id}}">
+			<button type="submit" class="btn btn-primary" id="submitForm"><i class="fa fa-save"></i>提交</button>
+		</form>
+	</div>
+	<script type="text/javascript" src="/js/advantage.js"></script>
+</body>
+</html>

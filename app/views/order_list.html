@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	{{include '/include/head'}}
+	<link rel="stylesheet" href="/css/base.css">
+	<link rel="stylesheet" href="/css/list.css">
+</head>
+<body>
+	{{include '/include/nav-top'}}
+	<!--/banner-section-->
+		<div id="demo-1" class="banner-inner">
+			<!--/header-w3l-->
+			<div class="header-w3-agileits" id="home">
+				<div class="inner-header-agile">
+					<nav class="navbar navbar-default">
+						{{include '/include/nav-header'}}
+						<!-- navbar-header -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+							<ul class="nav navbar-nav">
+								<li>
+									<a href="/">家</a>
+								</li>
+
+								<li>
+									<a href="/about">关于</a>
+								</li>
+								<li>
+									<a href="/gallery">照片</a>
+								</li>
+
+								<li>
+									<a href="/contact">联系</a>
+								</li>
+								<li class="active">
+									<a href="/admin/order/list">订单</a>
+								</li>
+
+							</ul>
+
+						</div>
+						<div class="clearfix"> </div>
+					</nav>
+					<!--查询-->
+					{{include '/include/nav-search'}}
+				</div>
+
+				<!--//header-w3l-->
+			</div>
+		</div>
+		<!--/banner-section-->
+		<!--//main-header-->
+		<!-- breadcrumb -->
+		<div class="w3_breadcrumb">
+			<div class="breadcrumb-inner">
+				<ul>
+					<li>
+						<a href="/">Home</a> <i> /</i></li>
+					<li>Order</li>
+				</ul>
+			</div>
+		</div>
+		<!-- //breadcrumb -->
+
+<div class="list-container">
+	<div class="clearfix list-header">
+		<span class="fr">共有数据：<strong>{{orders.length}}</strong> 条</span>
+	</div>
+	<table class="table table-list">
+		<thead>
+			<tr class="table-title">
+				<th scope="col" colspan="8">{{title}}</th>
+			</tr>
+			<tr class="table-header">
+				<th width="10%">ID</th>
+				<th width="10%">姓名</th>
+				<th width="10%">联系电话</th>
+				<th width="15%">到达日期</th>
+	            <th width="15%">退房日期</th>
+	            <th width="10%">房间类别</th>
+	            <th width="10%">入住人数</th>
+	            <th width="20%">操作</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			{{if orders.length}}
+        	{{each orders as order index}}
+        	<tr>
+        		
+        		<td>{{index + 1}}</td>
+        		<td>{{order.name}}</td>
+        		<td>{{order.phone}}</td>
+        		<td>{{order.arrivalTime}}<br />{{order.arrivalDate}}</td>
+        		<td>{{order.leaveTime}}<br />{{order.leaveDate}}</td>
+        		<td>{{order.roomCategory}}</td>
+        		<td>{{order.number}}</td>
+        		<td>
+        			<!--<a href="javascript:;" onClick="show_layer('订单编辑','/admin/order/edit/{{order.id}}','600','300')" class="btn-opt"><i class="fa fa-pencil"></i></a>-->
+        			<a href="javascript:;" class="btn-opt" onclick="delete_order(this,'{{order.id}}')"><i class="fa fa-trash-o"></i></a>
+        		</td>
+        	</tr>
+        	{{/each}}
+        	{{else}}
+        	<tr>
+        		<td colspan="8">暂无记录</td>
+        	</tr>
+        	{{/if}}
+		</tbody>
+	</table>
+</div>
+
+
+<script type="text/javascript" src="/libs/layer/layer.min.js"></script>
+<script type="text/javascript" src="/libs/dataTables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/js/list.js"></script>
+</body>
+</html>

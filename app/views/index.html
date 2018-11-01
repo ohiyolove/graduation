@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>{{title}}</title>
+		{{include '/include/head'}}
+		<link rel="stylesheet" href="/css/index.css">
+
+		<script type="text/javascript" src="/js/modernizr-2.6.2.min.js"></script>
+
+	</head>
+
+	<body>
+		{{include '/include/nav-top'}}
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 col-xs-12">
+					<div class="alert alert-info">所有文章</div>
+					<div id="photo-container">
+						{{each category as item}} {{if item.photos && item.photos.length>0}} {{each item.photos}}
+						<div class="col-xs-6 col-md-3 photo-box">
+							<div class="photo-item">
+								<div class="photo-post">
+									<a href="/photo/{{$value.id}}">
+										<img src="{{$value.poster}}" alt="{{$value.title}}">
+										<div class="zoomOverlay"></div>
+									</a>
+								</div>
+								<h3>
+							<a href="/photo/{{$value.id}}">{{$value.title}}({{$value.year}})</a>
+						</h3>
+								<div class="info">
+									<span class="info-data">
+								<span class="glyphicon glyphicon-eye-open"></span> {{$value.pv}}
+									</span>
+									<span class="info-data">
+								<span class="fa fa-comment"></span> {{$value.comments}}
+									</span>
+									<span class="info-data">
+								<span class="glyphicon glyphicon-film"></span>
+									<a href="/search?cat={{item.id}}&p=0">{{item.name}}</a>
+									</span>
+								</div>
+							</div>
+						</div>
+						{{/each}} {{/if}} {{/each}}
+					</div>
+				</div>
+				<div class="col-md-3 col-xs-12">
+					<div class="panel panel-danger ranks">
+						<div class="panel-heading">热门作品</div>
+						<div class="panel-body">
+							{{if ranks && ranks.length}} {{each ranks as photo index}}
+							<p>
+								<span class="label label-danger">{{index+1}}</span>
+								<a href="/photo/{{photo.id}}">{{photo.title}}</a>
+							</p>
+							{{/each}} {{else}}
+							<p class="text-center">暂无作品</p>
+							{{/if}}
+						</div>
+					</div>
+					<div class="panel panel-warning categorys">
+						<div class="panel-heading">全部分类</div>
+						<div class="panel-body">
+							{{if category && category.length}} {{each category as item}}
+							<a class="btn btn-primary ba-mb-5" href="/search?cat={{item.id}}&p=0">
+								{{item.name}} <span class="badge">{{item.photos.length}}</span>
+							</a>
+							{{/each}} {{else}}
+							<p class="text-center">暂无分类</p>
+							{{/if}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="/js/index.js"></script>
+
+		<!--/main-header-->
+		<!--/banner-section-->
+		<div id="demo-1" data-zs-src='["/images/4.jpg", "/images/2.jpg", "/images/1.jpg","/images/3.jpg"]' data-zs-overlay="dots">
+			<div class="demo-inner-content">
+				<!--/header-w3l-->
+				<div class="header-w3-agileits" id="home">
+					<div class="inner-header-agile">
+						<nav class="navbar navbar-default">
+							{{include '/include/nav-header'}}
+							<!-- navbar-header -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+								<ul class="nav navbar-nav">
+									<li class="active">
+										<a href="/">家</a>
+									</li>
+									<li>
+										<a href="/about">关于</a>
+									</li>
+									<li>
+										<a href="/gallery">照片</a>
+									</li>
+									<li>
+										<a href="/contact">联系</a>
+									</li>
+									<li>
+										<a href="/admin/order/list">订单</a>
+									</li>
+
+								</ul>
+
+							</div>
+							<div class="clearfix"> </div>
+						</nav>
+
+						<!--查询-->
+						{{include '/include/nav-search'}}
+					</div>
+
+					<!--//header-w3l-->
+					<!--/banner-info-->
+					<div class="baner-info">
+						<h3>欢迎<span>来到 </span>旭日  <span>阳光</span> 酒店</h3>
+						<h4>是你小憩的港湾</h4>
+						<p>享受生活</p>
+					</div>
+					<!--/banner-ingo-->
+
+				</div>
+			</div>
+		</div>
+		<!--/banner-section-->
+		<!--//main-header-->
+		<div class="special featured">
+			<div class="container">
+				<div class="ab-w3l-spa">
+					<h3 class="tittle">欢迎来到旭日阳光酒店！</h3>
+					<p>旭日阳光酒店位于成都青羊区人民中路二段，近远东百货，毗邻铂金城购物广场，临近天府广场，文殊院等著名人文景观。 　　客房内有现代化的室内设计和温暖的灯光，并配有一台平面电视、迷你吧和保险箱。小朋友们可以去儿童乐园游玩。
+					</p>
+				</div>
+				<!-- services -->
+				<div class="w3_agileits_services_grids">
+					{{if room.length}}
+        			{{each room as room index}}
+					<div class="col-md-3 w3_agileits_services_grid hvr-overline-from-center">
+						<div class="w3_agileits_services_grid_agile">
+							<div class="w3_agileits_services_grid_1">
+								<img src="{{room.poster}}" alt="service-img">
+							</div>
+							<h3>{{room.name}}</h3>
+							<p>{{room.description}}</p>
+						</div>
+						
+					</div>
+					{{/each}} {{else}}
+							<p class="text-center">暂无记录</p>
+							{{/if}}
+					<!--<div class="col-md-3 w3_agileits_services_grid hvr-overline-from-center">
+						<div class="w3_agileits_services_grid_agile">
+							<div class="w3_agileits_services_grid_1">
+								<img src="images/6.jpg" alt="service-img">
+							</div>
+							<h3>标间（￥79）</h3>
+							<p>书桌、多种规格电源插座、房内保险箱、空调、衣柜/衣橱、针线包、220V电压插座、遮光窗帘、手动窗帘、床具:毯子或被子、开夜床、电子秤、房间内高速上网、客房WIFI覆盖</p>
+						</div>
+					</div>
+					<div class="col-md-3 w3_agileits_services_grid hvr-overline-from-center">
+						<div class="w3_agileits_services_grid_agile">
+							<div class="w3_agileits_services_grid_1">
+								<img src="images/5.jpg" alt="service-img">
+							</div>
+							<h3>双人间（￥149）</h3>
+							<p>书桌、多种规格电源插座、房内保险箱、空调、衣柜/衣橱、针线包、220V电压插座、遮光窗帘、手动窗帘、床具:毯子或被子、开夜床、电子秤、房间内高速上网、客房WIFI覆盖</p>
+						</div>
+					</div>
+					<div class="col-md-3 w3_agileits_services_grid hvr-overline-from-center">
+						<div class="w3_agileits_services_grid_agile">
+							<div class="w3_agileits_services_grid_1">
+								<img src="images/6.jpg" alt="service-img">
+							</div>
+							<h3>大床房（￥199）</h3>
+							<p>书桌、多种规格电源插座、房内保险箱、空调、衣柜/衣橱、针线包、220V电压插座、遮光窗帘、手动窗帘、床具:毯子或被子、开夜床、电子秤、房间内高速上网、客房WIFI覆盖</p>
+						</div>
+					</div>
+					-->
+					<div class="clearfix"> </div>
+				</div>
+				<!-- //services -->
+
+				<div class="agileinf-button">
+					<a class="read" href="/single">
+						查看详情
+					</a>
+				</div>
+
+			</div>
+		</div>
+		<div class="featured-facility">
+			<!-- welcome -->
+
+			<div class="spa-agile">
+				<h3 class="tittle fea">特色设施</h3>
+				<div class="col-md-3 spa-grid">
+
+					<i class="fa fa-cutlery" aria-hidden="true"></i>
+
+					<h4>餐厅 </h4>
+
+				</div>
+				<div class="col-md-3 spa-grid">
+
+					<i class="fa fa-glass" aria-hidden="true"></i>
+
+					<h4>酒吧</h4>
+
+				</div>
+				<div class="col-md-3 spa-grid lost">
+
+					<i class="fa fa-music" aria-hidden="true"></i>
+
+					<h4>健身房</h4>
+
+				</div>
+				<div class="col-md-3 spa-grid lost">
+
+					<i class="fa fa-car" aria-hidden="true"></i>
+
+					<h4>停车场</h4>
+
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+
+			<!-- //welcome -->
+		</div>
+
+		<!-- about-bottom -->
+		<div class="about-bottom">
+			<div class="col-md-6 w3l_about_bottom_left">
+				<div class="video-grid-single-page-agileits">
+					<div data-video="44fbHx7P-t8" id="video"> <img src="images/watch.jpg" alt="" class="img-responsive" /> </div>
+				</div>
+
+				<div class="w3l_about_bottom_left_video">
+					<!-- <h4>watch our video</h4> -->
+				</div>
+			</div>
+			<div class="col-md-6 w3l_about_bottom_right one">
+				<h3 class="tittle why">为什么选择我们 ?我们的优势是什么？</h3>
+				<p></p>
+
+				<div class="panel-group w3l_panel_group_faq" id="accordion" role="tablist" aria-multiselectable="true">
+					<div class="panel panel-default">
+						{{if advantage && advantage.length}} {{each advantage as advantage index}}
+						<div class="panel-heading" role="tab" id="heading{{index}}">
+							<h4 class="panel-title asd">
+								
+					        <a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{index}}" aria-expanded="true" aria-controls="collapse{{index}}">
+					  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>{{advantage.name}}
+					      </a>
+				  </h4>
+						</div>
+						<div id="collapse{{index}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{index}}">
+							<div class="panel-body panel_text">
+								{{advantage.description}}
+							</div>
+						</div>
+						{{/each}} {{else}}
+							<p class="text-center">暂无分类</p>
+							{{/if}}
+					</div>
+
+					
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		
+		<!-- //about-bottom -->
+		<!-- about-bottom -->
+		<div class="about-bottom" id="ab">
+			<div class="col-md-6 w3l_about_bottom_right two">
+				<h3 class="tittle why">Book a Reservation</h3>
+				<div class="book-form">
+
+					<form method="post" action="/admin/order/add" class="form-horizotal" id="form-order">
+						<div class="col-md-6 form-date-w3-agileits">
+							<label><i class="fa fa-user" aria-hidden="true"></i> 姓名:</label>
+							<input type="text" name="order[name]" id="name" placeholder="您的姓名" required="" value="{{order.name}}">
+						</div>
+						<div class="col-md-6 form-date-w3-agileits second-agile">
+							<label><i class="fa fa-envelope" aria-hidden="true"></i> 电话:</label>
+							<input type="text" name="order[phone]" id="phone" placeholder="您的电话" required="" value="{{order.phone}}">
+						</div>
+						
+						<div class="col-md-6 form-date-w3-agileits">
+							<label><i class="fa fa-calendar" aria-hidden="true"></i> 到达日期 :</label>
+							<input id="datepicker" name="order[arrivalDate]" type="text" value="{{order.arrivalDate}}" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '{{order.arrivalDate}}';}" required="">
+
+						</div>
+						<div class="col-md-6 form-time-w3layouts second-agile">
+							<label><i class="fa fa-clock-o" aria-hidden="true"></i> 时间:</label>
+							<input type="time" name="order[arrivalTime]" value="{{order.arrivalTime}}">
+						</div>
+						<div class="col-md-6 form-date-w3-agileits">
+							<label><i class="fa fa-calendar" aria-hidden="true"></i> 退房日期 :</label>
+							<input id="datepicker1" name="order[leaveDate]" type="text" value="{{order.leaveDate}}" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '{{order.leaveDate}}';}" required="">
+
+						</div>
+						<div class="col-md-6 form-time-w3layouts second-agile">
+							<label><i class="fa fa-clock-o" aria-hidden="true"></i> 时间 :</label>
+							<input type="time" name="order[leaveTime]" value="{{order.leaveTime}}">
+						</div>
+						
+						<div class="col-md-6 form-left-agileits-w3layouts bottom-w3ls">
+							<label><i class="fa fa-home" aria-hidden="true"></i> 选择房间 :</label>
+							<select class="form-control" name="order[roomCategory]" id="roomCategory" value="{{order.roomCategory}}">
+					
+								<option>标间</option>
+								<option>双人间</option>
+								<option>大床房</option>
+								<option>豪华间</option>
+
+							</select>
+						</div>
+						<div class="col-md-6 form-left-agileits-w3layouts second-agile">
+							<label><i class="fa fa-users" aria-hidden="true"></i> 入住人数 :</label>
+							<select class="form-control" name="order[number]" id="number" value="{{order.number}}">
+								
+								<option>1 </option>
+								<option>2 </option>
+								<option>3 </option>
+								<option>4 </option>
+								<option>5 </option>
+								<option>其他</option>
+							</select>
+						</div>
+						<div class="clearfix"> </div>
+						
+						<input type="hidden" name="order[_id]" value="{{order.id}}">
+						<div class="make wow shake" data-wow-duration="1s" data-wow-delay=".5s">
+							<input type="submit" value="预定房间">
+			    		</div>
+					</form>
+				</div>
+
+			</div>
+			<div class="col-md-6 w3l_about_bottom_left">
+				
+
+				<img src="images/33.jpg" alt="" class="img-responsive" />
+				<div class="w3l_about_bottom_left_video book-text">
+
+				</div>
+			</div>
+
+			<div class="clearfix"> </div>
+		</div>
+		
+			
+		<!-- //about -->
+		<!-- /plans -->
+
+		<!-- Footer -->
+		{{include '/include/footer'}}
+		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<!-- Dropdown-Menu-JavaScript 幻灯片效果 优势管理展示滑动效果（jQuery）-->
+		<script>
+			$(document).ready(function() {
+				$(".dropdown").hover(
+					function() {
+						$('.dropdown-menu', this).stop(true, true).slideDown("fast");
+						$(this).toggleClass('open');
+					},
+					function() {
+						$('.dropdown-menu', this).stop(true, true).slideUp("fast");
+						$(this).toggleClass('open');
+					}
+				);
+			});
+		</script>
+		<!-- //Dropdown-Menu-JavaScript -->
+
+		<!--图片幻灯片效果jQuery-->
+		<script type="text/javascript" src="/js/jquery.zoomslider.min.js"></script>
+		<!-- search-jQuery -->
+		<script src="/js/main.js"></script>
+
+		<!--/script-->
+		<!--<script src="/js/simplePlayer.js"></script>
+		<script>
+			$("document").ready(function() {
+				$("#video").simplePlayer();
+			});
+			这里先删除，有问题再解开注释，加入simplePlayer.js
+		</script>-->
+		<!-- flexSlider图片轮播 -->
+		<script defer src="/js/jquery.flexslider.js"></script>
+		<script type="text/javascript">
+			$(window).load(function() {
+				$('.flexslider').flexslider({
+					animation: "slide",
+					start: function(slider) {
+						$('body').removeClass('loading');
+					}
+				});
+			});
+		</script>
+		<!--//script for portfolio-->
+		<!-- Calendar日历 -->
+		<link rel="stylesheet" href="/css/jquery-ui.css" />
+		<script src="/js/jquery-ui.js"></script>
+		<script>
+			$(function() {
+				$("#datepicker,#datepicker1,#datepicker2,#datepicker3").datepicker();
+			});
+		</script>
+		<!-- //Calendar -->
+		<script type="text/javascript" src="/js/move-top.js"></script>
+		<script type="text/javascript" src="/js/easing.js"></script>
+		<!--回到顶部-->
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event) {
+					event.preventDefault();
+					$('html,body').animate({
+						scrollTop: $(this.hash).offset().top
+					}, 900);
+				});
+			});
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				/*
+							var defaults = {
+					  			containerID: 'toTop', // fading element id
+								containerHoverID: 'toTopHover', // fading element hover id
+								scrollSpeed: 1200,
+								easingType: 'linear' 
+					 		};
+							*/
+
+				$().UItoTop({
+					easingType: 'easeOutQuart'
+				});
+
+			});
+		</script>
+		<!--end-smooth-scrolling-->
+		<!--js for bootstrap working-->
+		<script src="/js/bootstrap.js"></script>
+		<!-- //for bootstrap working -->
+		
+		<!--js for 预定客房-->
+		<script type="text/javascript" src="/js/order.js"></script>
+		<!-- //for 预定客房 -->
+		
+		
+
+	</body>
+
+</html>

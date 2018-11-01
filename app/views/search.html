@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	{{include '/include/head'}}
+	<link rel="stylesheet" type="text/css" href="/css/search.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/pager.css"/>
+</head>
+<body>
+{{include '/include/nav-top'}}
+<!--/banner-section-->
+		<div id="demo-1" class="banner-inner">
+			<!--/header-w3l-->
+			<div class="header-w3-agileits" id="home">
+				<div class="inner-header-agile">
+					<nav class="navbar navbar-default">
+						{{include '/include/nav-header'}}
+						<!-- navbar-header -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+							<ul class="nav navbar-nav">
+								<li>
+									<a href="/">家</a>
+								</li>
+
+								<li>
+									<a href="/about">关于</a>
+								</li>
+								<li>
+									<a href="/gallery">照片</a>
+								</li>
+
+								<li>
+									<a href="/contact">联系</a>
+								</li>
+
+							</ul>
+
+						</div>
+						<div class="clearfix"> </div>
+					</nav>
+					
+				</div>
+
+				<!--//header-w3l-->
+			</div>
+		</div>
+<!--/banner-section-->
+<div class="container">
+	<div class="row">
+		<div class="col-md-9 col-xs-12">
+			<div class="alert alert-info">搜索关键词：{{keyword}}</div>
+			{{if photos && photos.length>0}}
+			{{each photos as photo}}
+			<div class="media photo-list">
+  				<a class="media-left" href="/photo/{{photo.id}}">
+    				<img src="{{photo.poster}}">
+  				</a>
+  				<div class="media-body">
+    				<h4 class="media-heading"><a href="/photo/{{photo.id}}">{{photo.title}}&nbsp;({{photo.year}})</a></h4>
+    				<div class="photo-summary">{{photo.summary}}</div>
+    				<div class="photo-info">
+    					<span>作者：{{photo.director}}</span>
+    				</div>
+ 				</div>
+			</div>
+			{{/each}}
+			<div id="pagerWrap" pageTotal="{{totalPage}}" pageCurrent="{{currentPage}}">
+		        <pager :total="{{totalPage}}" :current="{{currentPage}}"></pager>
+		    </div>
+			{{else}}
+			暂无查询结果
+			{{/if}}
+		</div>
+		<div class="col-md-3 col-xs-12">
+			<div class="panel panel-success">
+				<div class="panel-heading">热搜关键词</div>
+  				<div class="panel-body">
+  					{{if keywords && keywords.length}}
+  					{{each keywords}}
+  					<a href="/search?search_text={{$value.keyword}}" class="search-link"><span class="label label-default">{{$value.keyword}}</span></a>
+  					{{/each}}
+  					{{else}}
+  					<p class="text-center">暂无搜索记录</p>
+  					{{/if}}
+  				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{include '/include/footer'}}
+<script src="/libs/vue.js"></script>
+<script src="/js/search.js"></script>
+</body>
+</html>
