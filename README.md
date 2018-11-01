@@ -24,7 +24,7 @@
 
 4. 启动服务器
 ```
-$ node app
+ nodemon app.js
 ```
 
 > 文件打包
