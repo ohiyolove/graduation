@@ -2,8 +2,6 @@
 	- 使用`Bootsrap`框架完成网站前端部分样式搭建;
 	- 使用`jQuery`完成js交互及ajax网络请求
 	- `Less`进行CSS样式预编译
-	- 首页使用瀑布流布局
-	- 分页使用vue2.0编写的[vue-pager](https://github.com/TenderQ/vue-pager)组件
 	- 使用`animate.css`添加动画效果
 	- 使用`jQuery.dataTables.js`展示电影列表
 	- 使用`Layer.js`弹出层插件进行消息提示
@@ -16,21 +14,13 @@
 	- 使用中间件`connect-multiparty`完成图片的上传操作
 	- 使用`underscroe`提供的函数`_.extend`完成对象的继承与覆盖
 	- 使用`Moment.js`格式化时间;
+3.启动mongodb
 
-3. Grunt集成
-	- 集成`jshint`对js语法检查，集成`uglify`进行文本压缩，集成`less`进行`less`文件预编译
-	- 集成`nodemon`完成服务器的自动重启
-	- 集成`mocha`完成对用户操作的单元测试
-
+   mongod
+   
 4. 启动服务器
 ```
  nodemon app.js
-```
-
-> 文件打包
-
-```
-$ grunt build
 ```
 
 > mongodb版本号 3.4.6
